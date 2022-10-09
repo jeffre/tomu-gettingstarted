@@ -8,20 +8,19 @@ Tomu's [quickstart](https://github.com/im-tomu/tomu-quickstart) did not work
 
 ## install Arm toolchain
 Tomu's instructions lead to a depreciated page arm.com that did not work
-despite my best efforts. Using [brew](brew.sh) was MUCH easier:
+despite my best efforts. Using [brew](brew.sh) was easier:
 ```
 brew tap osx-cross/arm
 brew install arm-gcc-bin
 ```
 
 ## install make
-Make is a component of the xcode pacakge. So the first step is to install xcode.
+Make is a component of the xcode package. So the first step is to install xcode.
 However, in my sigular experience, this process was not smooth. xcode seemed to
 install and reinstall itself a half-dozen times. 
 
-Sometime after that, MacOS give me a popup that said I needed to authorize the
-new packages in a way that I have never had to do before. Any rate, I dont feel
-confident in this step will happen to everyone so your experience could vary.
+Sometime after that, a MacOS prompted me through authorizing new packages under
+the "Security & Privacy" settings page. 
 
 1. Install [xcode](https://apps.apple.com/us/app/xcode/id497799835)
 2. Go to "System Preferences" > "Security & Privacy" > "General" tab and there
@@ -30,15 +29,17 @@ and intel (?) tooling.
 
 
 ## install dfu-utils
+`dfu-util` will be used to to find the tomu and to upload the compiled program
+
     brew install dfu-util
 
 
 # Fleshing out the dependencies (based on bare-minimum)
 Tomu's quickstart guide has a [bare-minimum](https://github.com/im-tomu/tomu-quickstart/tree/master/bare-minimum)
-project with only 3 files. However, that is a little deceiving because its 
-Makefile includes paths from parent directories. We will look into these paths
-to figure out what their purpose is and where their upstream is source is (so
-we can keep them up to date).
+project with deceivingly few files. However, its Makefile brings in paths from
+parent directories (listed below). The next 3 sections of his guide will
+explore them to find our their purpose and where their upstream source is
+located (so we can keep them up to date).
 - ../libopencm3
 - ../include/toboot.h
 - ../tomu-efm32hg309.ld
